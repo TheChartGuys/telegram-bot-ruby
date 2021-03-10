@@ -31,6 +31,7 @@ module Telegram
         return unless response['ok']
 
         response['result'].each do |data|
+          logger.info(data)
           yield handle_update(Types::Update.new(data))
         end
       rescue Faraday::TimeoutError
